@@ -1,0 +1,13 @@
+<div class="margin-30">
+    <h1>Dê sua nota</h1>
+
+    <div [formGroup]="form">
+        <mat-form-field appearance="outline">
+            <mat-label>Nota</mat-label>
+            <input matInput placeholder="De sua nota" formControlName="grade">
+          </mat-form-field>
+    </div>
+
+    <button mat-button (click)="grade()">Dar nota</button>
+
+</div>

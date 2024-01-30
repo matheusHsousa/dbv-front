@@ -1,0 +1,45 @@
+<div class="margin-20 container-ranks">
+
+  <div>
+    <mat-card class="mat-card-wdt">
+      <div class="text-ranking">
+          <h2>Ranking Geral</h2>
+      </div>
+      <mat-card-content class="border-ranking">        
+          <app-raking [data]="rankingData"></app-raking>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <mat-card-content class="padding-0">
+    <div class="txt-chellenge  margin-top-bottom-20">
+      <h2 class="margin-bottom-0">Desafios</h2>
+    </div>
+
+    <div class="container gap-45">
+      <div class="cardStyle" *ngFor="let cardData of cardDataList">
+        <mat-card class="cardContainer gap-10" >
+          <div class="cardTitle">
+            <mat-card-title> <strong> {{ cardData.title  }} </strong></mat-card-title>
+          </div>
+
+          <mat-card-content>
+            <strong>Descrição:</strong>
+            <p>{{ cardData.description_ch }}</p>
+          </mat-card-content>
+          <mat-card-actions class="gap-10">
+            <button
+              class="button-width"
+              color="primary"
+              mat-raised-button
+              (click)="openDetails(cardData)"
+            >
+              Detalhes
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+
+  </mat-card-content>
+</div>

@@ -1,0 +1,53 @@
+<div class="margin-30 container-create ">
+    
+    <h2><strong>Criar Unidade</strong></h2>
+    <img class="profile-photo-create" src="{{ dataSelectedImageCreate || '../../../../assets/img/vitrine-barraca-default.jpg' }}" />
+
+
+    <form [formGroup]="FormUnitCreate">
+        
+        <div class="margin-top-bottom-20">
+            <input type="file" class="input-mage" (change)="onFileSelectedCreate($event)" formControlName="image"/>
+        </div>
+          
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field>
+
+        <button color="primary" mat-raised-button class="button-width" (click)="create()">Criar</button>
+    </form>
+</div>
+
+
+
+<mat-accordion class="margin-bottom">
+    <mat-expansion-panel *ngFor="let cardData of cardsData" (opened)="onPanelOpened(cardData)" 
+    (closed)="onPanelClosed()" hideToggle>
+        <mat-expansion-panel-header (click)="action(cardData.id)">
+            <mat-panel-title class="gap-10">
+                <img class="profile-photo" src="{{ cardData.image || '../../../../assets/img/vitrine-barraca-default.jpg' }}" />
+                {{ cardData.name }}
+            </mat-panel-title>
+            <span class="material-icons margin-top-7">edit</span>
+
+        </mat-expansion-panel-header>
+        
+        
+        <img class="logo" src="{{ dataSelectedImage || '../../../../assets/img/vitrine-barraca-default.jpg' }}" />
+
+        <form [formGroup]="FormUnit">
+        
+            <div class="margin-top-bottom-20">
+                <input type="file" class="input" (change)="onFileSelected($event)" formControlName="image"/>
+            </div>
+              
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="name">
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" class="button-width" (click)="save(cardData.id)"> Enviar</button>
+        </form>
+    </mat-expansion-panel>
+</mat-accordion>

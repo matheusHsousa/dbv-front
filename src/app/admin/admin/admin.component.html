@@ -1,0 +1,17 @@
+<mat-accordion class="margin-30">
+  <mat-expansion-panel *ngFor="let cardData of cardsData">
+    <mat-expansion-panel-header>
+      <div >
+        {{ cardData.title }}
+        <mat-icon>
+          {{ cardData.icon }}
+        </mat-icon>
+      </div>
+    </mat-expansion-panel-header>
+
+    <div class="d-flex">
+      <button mat-raised-button *ngIf="cardData.button1" (click)="action(cardData.path)" class="button-width">{{ cardData.button1 }}</button>
+      <button mat-raised-button color="primary" *ngIf="cardData.button2" (click)="action(cardData.path2)" class="button-width">{{ cardData.button2 }}</button>
+    </div>    
+  </mat-expansion-panel>
+</mat-accordion>

@@ -1,0 +1,33 @@
+<div class="margin-30">
+    <mat-card>
+        <mat-card-content class="d-flex">
+            <div class="d-flex gap-10">
+                <img class="round-icon" src="{{ image || '../../../../assets/img/icone.webp' }}"/>
+                <button mat-raised-button (click)="openDialog()">Faça sua postagem</button>
+            </div>
+        </mat-card-content>
+    </mat-card> 
+    
+    <ng-container *ngFor="let publication of publications">
+        <mat-card class="margin-top-bottom-12">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image">
+                <img class="round-icon" src="{{ publication.image || '../../../../assets/img/icone.webp' }}"/>
+            </div>
+            <mat-card-title class="font-title">{{ publication.memberName }}</mat-card-title>
+            <mat-card-subtitle class="font-date">{{ publication.date | date:'dd/MM/yyyy HH:mm:' }}</mat-card-subtitle>
+        </mat-card-header>
+        <img src="{{ publication.publicationImage || '../../../../assets/img/icone.webp' }}"/>
+        <mat-card-content class="margin-top-bottom-12">
+            <p>{{ publication.text_field }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <!-- <button mat-button (click)="like(publication.id, publication.hasLiked)">
+                Curtir
+            </button> -->
+            <button mat-button>Comentar</button>
+            <button mat-button (click)="openGrade(publication)" *ngIf="shouldShowIcon(['ADMIN'])">Nota</button>
+        </mat-card-actions>
+    </mat-card>
+    </ng-container>
+  </div>

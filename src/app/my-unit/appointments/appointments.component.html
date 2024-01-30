@@ -1,0 +1,87 @@
+<div class="margin-30">
+   
+   <div class="d-flex container-perfil">
+        <img class="icon" src="{{ image || '../../../../assets/img/vitrine-barraca-default.jpg' }}" />
+        <span>{{ name }}</span>
+        <span class="position">{{position}}</span>
+   </div>
+
+ 
+
+   <button class="marin-top-20" mat-raised-button color="primary" (click)="openDialog()">Relação dos pontos</button>
+
+ 
+
+
+   <form [formGroup]="appointmentsForm" class="marin-top-20">
+
+    <mat-form-field appearance="outline" class="input">
+        <mat-label>Data de nascimento</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input">
+        <mat-label>Pontualidade</mat-label>
+        <mat-select formControlName="a">
+        <mat-option *ngFor="let value of values" [value]="value">{{value}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input">
+        <mat-label>Presença</mat-label>
+        <mat-select formControlName="b">
+        <mat-option *ngFor="let value of values" [value]="value">{{value}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input">
+        <mat-label>Uniforme</mat-label>
+        <mat-select formControlName="c">
+        <mat-option *ngFor="let value of values" [value]="value">{{value}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input">
+        <mat-label>Material</mat-label>
+        <mat-select formControlName="d">
+        <mat-option *ngFor="let value of values" [value]="value">{{value}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input">
+        <mat-label>Mensalidade</mat-label>
+        <mat-select formControlName="e">
+        <mat-option *ngFor="let value of values" [value]="value">{{value}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input">
+        <mat-label>Disciplina</mat-label>
+        <mat-select formControlName="f">
+        <mat-option *ngFor="let value of values" [value]="value">{{value}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input">
+        <mat-label>Tarefas de classe</mat-label>
+        <mat-select formControlName="g">
+        <mat-option *ngFor="let value of values" [value]="value">{{value}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="input">
+        <mat-label>Espirito de Equipe</mat-label>
+        <mat-select formControlName="h">
+        <mat-option *ngFor="let value of values" [value]="value">{{value}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+  </form>
+
+  <p class="tot">Total: {{ tot }}</p>
+
+  <div class="d-flex justify-end">
+    <button mat-raised-button color="primary" class="button-width" [disabled]="appointmentsForm.invalid" (click)="send()">Salvar</button>
+  </div>
+</div>

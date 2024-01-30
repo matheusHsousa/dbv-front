@@ -1,0 +1,79 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .podium {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+  .text-section {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  
+  .podium__city {
+    padding-top: 10px;
+    text-align: center;
+    margin: 0px;
+    font-size: 1rem;
+    align-self: flex-end; 
+    color: #000000;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .podium__city_pts {
+    text-align: center;
+    margin: 0px;
+    font-size: 12px;
+    align-self: flex-end; 
+    color: #000000;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .podium__rank {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: #fff;
+    height: 75px;
+  }
+  
+  .gold {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    min-height: 300px;
+    margin: 0px 5px;
+    border-radius: 10px;
+    width: 100%;
+    background: linear-gradient(333deg, rgba(255, 172, 37, 1) 0%, rgba(254, 207, 51, 1) 13%, rgba(254, 224, 51, 1) 53%, rgba(255, 172, 37, 1) 100%);
+  }
+  
+  .silver {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    min-height: 200px;
+    border-radius: 10px;
+    width: 100%;
+    background: linear-gradient(180deg, #c0c0c0 0%, #808080 100%);
+  }
+  
+  .bronze {
+    flex-direction: column;
+    justify-content: space-between;
+    display: flex;
+    border-radius: 10px;
+    margin: 0px 5px;
+    min-height: 140px;
+    width: 100%;
+    background: linear-gradient(180deg, #CD7F32 0%, #8B4513 100%);
+  }
+  

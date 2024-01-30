@@ -1,0 +1,48 @@
+<div [ngClass]="{ overflowHidden: loaderService.isLoading | async }" class="w-100 test">
+  <div *ngIf="loaderService.isLoading | async" class="loader_container">
+    <mat-spinner [diameter]="70"></mat-spinner>
+  </div>
+
+  <mat-toolbar *ngIf="isAuthenticated" class="fixed-toolbar color-bd">
+    <div class="toolbar-content">
+      <div>
+        <span class="padding-left-10 color-white">{{ currentRouteName }}</span>
+      </div>
+    </div>
+  </mat-toolbar>
+  
+  <div class="seu-menu-estilo" *ngIf="shouldShowIcon(['ADMIN', 'CUSTOMER', 'USER'])">
+    <div  routerLink="courses" class="menu-item">
+      <a routerLink="courses"  matTooltipPosition="after">
+        <mat-icon class="color-white">home</mat-icon>
+      </a>
+    </div>
+    <div *ngIf="shouldShowIcon(['ADMIN'])" routerLink="admin" class="menu-item">
+      <a routerLink="admin"  matTooltipPosition="after">
+        <mat-icon class="color-white">settings</mat-icon>
+      </a>
+    </div>
+    <div *ngIf="shouldShowIcon(['ADMIN', 'CUSTOMER', 'USER'])" routerLink="MyUnit" class="menu-item">
+      <a routerLink="MyUnit"  matTooltipPosition="after">
+        <mat-icon class="color-white">people</mat-icon>
+      </a>
+    </div>
+    <div *ngIf="shouldShowIcon(['ADMIN', 'CUSTOMER', 'USER'])" routerLink="MyProfile" class="menu-item">
+      <a routerLink="MyProfile" matTooltipPosition="after">
+        <mat-icon class="color-white pointer">person</mat-icon>
+      </a>
+    </div>
+    <div *ngIf="shouldShowIcon(['ADMIN', 'CUSTOMER', 'USER'])">
+      <a (click)="logout()" matTooltipPosition="after">
+        <mat-icon class="color-white pointer">exit_to_app</mat-icon>
+      </a>
+    </div> 
+  </div>
+
+  <mat-sidenav-container>
+    <mat-sidenav-content [ngClass]="{ 'margin-30-sidenav': isAuthenticated && !isLoginPage() }">
+      <ng-container *ngIf="isAuthenticated"> </ng-container>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

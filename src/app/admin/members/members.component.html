@@ -1,0 +1,61 @@
+
+<mat-tab-group animationDuration="0ms">
+    
+    <mat-tab label="Ativos">
+
+      <form [formGroup]="filter" class="margin-0-15-0-30 d-flex"> 
+        <mat-form-field appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input matInput placeholder="Ex. Fulano da Silva..."  formControlName="name" (input)="submit()"/>
+        </mat-form-field>
+  
+        <button class="margin-top-8" mat-icon-button (click)="clean()"><mat-icon>delete</mat-icon></button>
+
+      </form>
+      
+
+        <div *ngFor="let member of members" class="margin-tab">
+          <mat-list-item role="listitem">
+            <div class="align-space">
+              <span *ngIf="member.memberName.length <= 20; else showEllipsis" class="align-text-center">{{ member.memberName }}</span>
+              <ng-template #showEllipsis>
+                  <span class="align-text-center">{{ member.memberName.substring(0, 20) + '...' }}</span>
+              </ng-template>
+              <div class="d-flex-justify-end">
+                  <button mat-icon-button (click)="edit(member)"> <mat-icon class="icon">edit</mat-icon></button>
+                  <button mat-icon-button (click)="seeMore(member)"> <mat-icon class="icon">visibility</mat-icon></button>
+              </div>
+          </div>          
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </div>
+    </mat-tab>
+    <mat-tab label="Inativos">
+
+      <form [formGroup]="inactiveFilter" class="margin-0-15-0-30 d-flex"> 
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input matInput placeholder="Ex. Barbearia mario e maria"  formControlName="name" (input)="submitInactve()"/>
+        </mat-form-field>
+  
+        <button class="margin-top-8" mat-icon-button (click)="cleanInactve()"><mat-icon>delete</mat-icon></button>
+
+      </form>
+      <div *ngFor="let member of inactiveMembers" class="margin-tab">
+        <mat-list-item role="listitem" class="">
+          <div class="align-space height">
+            <span>{{ member.memberName }}</span>
+            <div class="d-flex-justify-end">
+              Ativar
+              <mat-slide-toggle [(ngModel)]="member.isActive" (change)="changeStatus(member.id, member.isActive)"></mat-slide-toggle>
+            </div>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-tab>
+    
+      
+ 
+</mat-tab-group>
+  

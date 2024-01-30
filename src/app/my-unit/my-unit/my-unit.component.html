@@ -1,0 +1,37 @@
+<div class="margin-20 container">
+
+    <div class="margin-bottom-30">
+        <img class="unitImage" src="{{ unitImage || '../../../../assets/img/vitrine-barraca-default.jpg' }}" />
+    </div>
+
+    <mat-card class="mat-card-wdt">
+        <div class="text-ranking">
+            <h2>Ranking da unidade</h2>
+        </div>
+        <mat-card-content class="border-ranking">        
+            <app-ranking [data]="rankingData"></app-ranking>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-divider></mat-divider>
+
+    <mat-card class="margin-top-10 mat-card-wdt">
+        <div class="text-ranking">
+            <h2>Membros</h2>
+        </div>
+        <mat-card-content class="border-ranking">      
+            <mat-list>
+                <mat-list-item class="members" *ngFor="let member of members">
+                    <div class="d-flex gap-10" (click)="action(member)">
+                        <img class="icon" src="{{ member.image  || '../../../../assets/img/icone.webp' }}">
+                        <div class="text-name">
+                            <span class="margin-bottom-0">{{ member.memberName.length > 16 ? member.memberName.slice(0, 16) + '...' : member.memberName }}</span> 
+                            <span class="text-size margin-bottom-0">{{member.position}} - {{member.totalPoints}} pts.</span>
+                        </div>
+                    </div>  
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+    
+</div>

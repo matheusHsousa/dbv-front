@@ -1,0 +1,43 @@
+<div class="margin-challenge">
+    <form [formGroup]="FormChallenge" class="container">
+
+        <div>
+            <h1>Imagem para o desafio:</h1>
+            <img class="logo" src="{{ dataSelectedImage || '../../../../assets/img/vitrine-barraca-default.jpg' }}" />
+
+            <div class="margin-top-bottom-20">
+              <input type="file" class="input" (change)="onFileSelected($event)" formControlName="image"/>
+            </div>
+        </div>    
+
+        <mat-form-field appearance="outline" class="input">
+            <mat-label>Titulo do desafio</mat-label>
+            <input matInput placeholder="Ex: Limpar casa" formControlName="title"/>
+        </mat-form-field>
+    
+
+        <mat-form-field appearance="outline" class="input">
+            <mat-label>Pontos</mat-label>
+            <input matInput placeholder="Ex: 100" formControlName="points"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="input">
+            <mat-label>Data limite</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="deadLine">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <div class="inputLine">
+            <mat-form-field appearance="outline" class="input">
+              <mat-label>Descrição</mat-label>
+              <input matInput formControlName="description_ch" />
+            </mat-form-field>
+        </div>
+    </form>
+
+    <div class="d-flex gap-10">
+        <button mat-raised-button color="primary" class="button-width" (click)="save()"> Enviar</button>
+        <button mat-raised-button  class="button-width" (click)="clean()"> Limpar</button>
+    </div>
+</div>

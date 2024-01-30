@@ -1,0 +1,10 @@
+<div class="container podium">
+    <div *ngFor="let item of sortedData(); let i = index" [ngClass]="{ 'gold': i === 0, 'silver': i === 1, 'bronze': i === 2}">
+      <div class="podium__rank">{{ i + 1 }}</div>
+      
+      <div>
+        <p class="podium__city">{{ item.name.length > 10 ? item.name.slice(0, 8) + '..' : item.name }} </p>
+        <p class="podium__city_pts"> {{ item.value }}</p>
+      </div>
+    </div>
+</div>

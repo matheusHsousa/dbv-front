@@ -1,0 +1,16 @@
+<div class="margin-30">
+    <div class="d-flex gap-10 container">
+        <form>
+            <mat-form-field class="input" appearance="outline">
+                <textarea matInput name="text" [(ngModel)]="text" placeholder="Digite sua legenda.."></textarea>
+            </mat-form-field>   
+        </form>
+        
+        <div class="margin-top-bottom-20">
+            <img class="logo" src="{{ dataSelectedImage || '../../../../assets/img/vitrine-barraca-default.jpg' }}" />
+
+            <input type="file" class="input" (change)="onFileSelected($event)"/>
+        </div>
+        <button mat-raised-button (click)="onNoClick()" color="primary">Publicar</button>
+    </div>
+</div>

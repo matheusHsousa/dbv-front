@@ -1,0 +1,39 @@
+.medical-record {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .info, .address, .contact, .phone-numbers, .photo {
+    margin-bottom: 20px;
+  }
+  
+  .phone-numbers ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .phone-numbers li {
+    margin-bottom: 5px;
+  }
+  
+  .profile-photo {
+    width: 100px; 
+    height: 100px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+  }
+  
+  strong {
+    margin-right: 5px;
+    font-weight: bold;
+  }
+  
+.photo{
+    display: flex;
+    justify-content: center;
+}

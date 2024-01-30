@@ -1,0 +1,41 @@
+<mat-accordion class="margin-bottom">
+    <mat-expansion-panel *ngFor="let cardData of cardDataList" (opened)="onPanelOpened(cardData)" 
+    (closed)="onPanelClosed()" hideToggle>
+        <mat-expansion-panel-header (click)="action(cardData.id)">
+            <mat-panel-title>
+                {{ cardData.title }}
+                <span class="material-icons open">edit</span>
+                <span class="material-icons close">edit</span>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <img class="logo" src="{{ dataSelectedImage || '../../../../assets/img/vitrine-barraca-default.jpg' }}" />
+
+        <form [formGroup]="FormChallenge">
+        
+            <div class="margin-top-bottom-20">
+                <input type="file" class="input" (change)="onFileSelected($event)" formControlName="image"/>
+            </div>
+              
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Titulo</mat-label>
+                <input matInput formControlName="title">
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Pontos</mat-label>
+                <input matInput formControlName="points">
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Data final</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="deadLine">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Descrição</mat-label>
+                <input matInput formControlName="description_ch">
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" class="button-width" (click)="save(cardData.id)"> Enviar</button>
+        </form>
+    </mat-expansion-panel>
+</mat-accordion>

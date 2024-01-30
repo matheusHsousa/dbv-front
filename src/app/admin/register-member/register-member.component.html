@@ -1,0 +1,90 @@
+<div class="margin-30">
+    <form [formGroup]="FormMember">
+        <div class="container-icon">
+            <img class="round-icon" src="{{ dataSelectedImage || '../../../../assets/img/icone.webp' }}" />
+
+            <div class="margin-top-bottom-20">
+              <input type="file" class="input" (change)="onFileSelected($event)" formControlName="image"/>
+            </div>
+        </div>   
+
+        <mat-form-field appearance="outline" class="input">
+            <mat-label>Nome</mat-label>
+            <input
+              matInput
+              placeholder="Placeholder"
+              formControlName="memberName"
+            />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="input">
+            <mat-label>Cargo</mat-label>
+            <mat-select formControlName="position">
+              <mat-option *ngFor="let position of positions" [value]="position.position">
+                {{ position.position }}
+              </mat-option>
+            </mat-select>            
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="input">
+          <mat-label>Unidade</mat-label>
+          <mat-select formControlName="unit">
+            <mat-option *ngFor="let unit of units" [value]="unit.name">
+              {{ unit.name }}
+            </mat-option>
+          </mat-select>            
+      </mat-form-field>
+          
+        <mat-form-field appearance="outline" class="input">
+            <mat-label>Data de nascimento</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="birthday">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+          <mat-form-field appearance="outline" class="input">
+            <mat-label>Celular</mat-label>
+            <input
+              matInput
+              placeholder="Placeholder"
+              formControlName="cellNumber1"
+              (input)="formatPhoneNumber()"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="input">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="login" />
+            <mat-error *ngIf="FormMember.get('login')?.hasError('required')"
+              >Login is required</mat-error
+            >
+            <mat-error *ngIf="FormMember.get('login')?.hasError('email')"
+              >Invalid email</mat-error
+            >
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="input">
+            <mat-label>Senha</mat-label>
+            <input
+              matInput
+              formControlName="password"
+              [type]="hide ? 'password' : 'text'"
+            />
+            <mat-icon matSuffix (click)="togglePasswordVisibility()">{{
+              hide ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="input">
+            <mat-label>Permissões</mat-label>
+            <mat-select formControlName="role">
+              <mat-option *ngFor="let role of roles" [value]="role.roles">
+                {{ role.roles }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="d-flex gap-10">
+            <button mat-raised-button color="primary" class="button-width" (click)="save()"> Enviar</button>
+            <button mat-raised-button  class="button-width" (click)="clean()"> Limpar</button>
+          </div>
+    </form>
+</div>

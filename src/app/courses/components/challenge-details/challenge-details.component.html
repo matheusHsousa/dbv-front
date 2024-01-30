@@ -1,0 +1,30 @@
+<mat-card class="example-card margin-20">
+    <mat-divider></mat-divider>
+    <mat-card-header>
+      <mat-card-title><strong>{{ challengeData.title }}</strong></mat-card-title>
+      <mat-card-subtitle>{{ challengeData.created_at | date:'dd/MM/yyyy HH:mm' }}</mat-card-subtitle>
+    </mat-card-header>
+    <img class="logo" src="{{ challengeData.image || '../../../../assets/img/vitrine-barraca-default.jpg' }}" />
+    <mat-card-content>
+        <div class="margin-top-10">
+            <p>
+                {{ challengeData.description_ch }}
+            </p>
+        </div>
+
+      <div>
+        <strong>Pontuação max. :</strong>
+        <p>{{ challengeData.points }}</p>
+      </div>
+
+      <div>
+        <strong>Data Limite :</strong>
+        <p>{{ challengeData.deadLine | date:'dd/MM/yyyy' }}</p>
+      </div>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions class="mat-align-end">
+        <button color="primary" mat-button (click)="publicate()">Publicações <mat-icon>public</mat-icon></button>
+    </mat-card-actions>      
+    <mat-divider></mat-divider>
+  </mat-card>
